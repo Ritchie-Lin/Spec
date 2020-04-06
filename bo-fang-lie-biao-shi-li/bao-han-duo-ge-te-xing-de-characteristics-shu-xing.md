@@ -1,2 +1,0 @@
-# 包含多个特性的CHARACTERISTICS属性
-
