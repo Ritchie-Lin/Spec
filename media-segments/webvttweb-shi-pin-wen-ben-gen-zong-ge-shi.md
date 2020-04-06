@@ -1,4 +1,4 @@
-# WebVTT\(web视频文本跟踪格式\)
+# WebVTT
 
 WebVTT片段是WebVTT文件的一部分，WebVTT媒体片段携带字幕。
 
