@@ -22,6 +22,30 @@ LOCAL属性中的提示时间戳可能不在该段所覆盖的时间范围内。
 
 
 补WebVTT字幕格式：  
+拥有音频、视频、字幕的M3U8文件格式结构图：
+
+![HLS&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x56FE;](../.gitbook/assets/image%20%286%29.png)
+
+其中表示字幕的M3U8内容位于Master Playlist中，type为"Subtitle"，内容为：  
+`#EXTM3U  
+#EXT-X-VERSION:4  
+#EXT-X-MEDIA:TYPE=SUBTITLES,NAME="ENGLISH",LANGUAGE="eng",URI="english.m3u8"  
+#EXT-X-MEDIA:TYPE=SUBTITLES,NAME="日本語",LANGUAGE="jpn",URI="jpn.m3u8"  
+#EXT-X-MEDIA:TYPE=SUBTITLES,NAME="中文",LANGUAGE="zho",URI="zho.m3u8"`  
+  
+上面的每一种语言的字幕的URI对应的是一个m3u8文件，这个m3u8文件包含的内容是WebVTT的list，比如english.m3u8包含的内容：  
+`#EXTM3U  
+#EXT-X-VERSION:4  
+#EXT-X-TARGETDURATION:300  
+#EXT-X-MEDIA-SEQUENCE:1  
+#EXT-X-PLAYLIST-TYPE:VOD  
+#EXTINF:300.000,  
+00001.vtt  
+#EXTINF:37.840,  
+00002.vtt  
+#EXT-X-ENDLIST`  
+  
+EXTINF下面的vtt地址对应的vtt文件里包含的是具体的字幕内容， 比如00001.vtt包含的内容：  
 `WEBVTT  
   
 00:00:09.960 --> 00:00:12.600  
@@ -35,12 +59,11 @@ Committee,
 00:00:14.480 --> 00:00:16.640  
 and sent a team to Paris   
 in 1900,`  
+  
 注意：  
 1. 第一行必需是WEBVTT，表明这是个WebVTT文件文件。  
 2. 接着是一空行，后面就是每一项的一个cue，包含时间范围和要显示的字幕，时间格式是HH:MM:SS.sss，时:分:秒.毫秒， 开始时间 --&gt; 结束时间，--&gt;的两边各有一个空格，这两个时间必需写在同一行，并且时间都是相对于视频开始的时间间隔。  
 3. 时间之后是字幕文本，时间和字幕文本之间不能有空行，字幕文本可以是一行或多行，字幕文本中不能有空行。
-
-
 
 
 
