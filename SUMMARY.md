@@ -8,7 +8,7 @@
   * [MPEG-TS](media-segments/mpeg-ts.md)
   * [Fragmented MP4](media-segments/fragmented-mp4.md)
   * [Packed Audio](media-segments/packed-audio.md)
-  * [WebVTT](media-segments/webvttweb-shi-pin-wen-ben-gen-zong-ge-shi.md)
+  * [WebVTT](media-segments/webvtt.md)
 * [播放列表](playlists/README.md)
   * [播放列表的定义](playlists/definition-of-a-playlist.md)
   * [属性列表](playlists/attribute-lists.md)
